@@ -39,7 +39,7 @@ var callback = () => api.sendMessage({body:` ╾━╤デ╦︻(▀̿Ĺ̯▀̿ �
 
 🌸Bot Prefix🌸☞︎︎︎☜︎︎︎✰ ${global.config.PREFIX}
 
-♥️Bot Owner♥️ ཫ༄𒁍⃝𝐌𝐀𝐑⃟𝐈𝐍𝐀☜︎︎︎✰ 
+♥️Bot Owner♥️ ཫ༄𝗝𝗔𝗠𝗔𝗟☜︎︎︎✰ 
 
 🥳UPTIME🥳
 
