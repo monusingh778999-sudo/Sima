@@ -31,7 +31,7 @@ var rand = tl[Math.floor(Math.random() * tl.length)]
           ${rand} 🍀🌺💦
 
 
-           * ཫ༄𒁍⃝𝐌𝐀𝐑⃟𝐈𝐍𝐀🍒`
+           * ཫ༄𒁍𝗝𝗔𝗠𝗔𝗟🍒`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
