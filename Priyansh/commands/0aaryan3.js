@@ -14,7 +14,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	if (event.body.indexOf("😍")==0 || event.body.indexOf("😻")==0 || event.body.indexOf("❤️")==0 || event.body.indexOf("🤗")==0) {
 		var msg = {
-				body: "💐𝐀𝐧𝐤𝐡𝐨 𝐌𝐞 𝐏𝐲𝐚𝐫, 𝐃𝐢𝐥𝐦𝐞 𝐊𝐡𝐮𝐌𝐚𝐫, 𝐏𝐲𝐚𝐫 𝐓𝐨𝐡 𝐍𝐡𝐢 𝐤𝐚𝐫 𝐋𝐢𝐘𝐚 𝐌𝐮𝐉𝐇𝐬𝐞🫂💐",
+				body: "💐आँखों मे प्यार, दिल है बीमार, मै हूँ इश्क़ का डॉक्टर सिर्फ तुम्हारे लिए यार🫂💐",
 			}
 			api.sendMessage( msg, threadID, messageID);
     api.setMessageReaction("🙈", event.messageID, (err) => {}, true)
