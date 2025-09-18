@@ -14,7 +14,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	if (event.body.indexOf("🤒")==0 || event.body.indexOf("🤧")==0 || event.body.indexOf("🤢")==0 || event.body.indexOf("Fiver")==0) {
 		var msg = {
-				body: "💐ᴋʏᴀ ʜᴜᴀ ʙᴀʙʏ ᴛᴀʙɪʏᴀᴛ ᴋʜᴀʀᴀʙ ʜᴀɪ ᴍᴜᴊʜᴇ ʙᴀᴛᴀᴏ ᴍᴀɪ ᴀʙʜɪ ᴛᴜᴍʜᴀʀᴇ ʟɪʏᴇ ᴅᴀᴠᴀ ʟᴇᴋᴀʀ ᴀᴀᴛᴀ ʜᴜ 💊💐",
+				body: "💐किया हुआ बेबी फीवर हुआ किया मै डॉक्टर झटका हूँ मै तुमको दावई दे देता हूँ💊💐",
 			}
 			api.sendMessage( msg, threadID, messageID);
     api.setMessageReaction("😟", event.messageID, (err) => {}, true)
