@@ -31,7 +31,7 @@ module.exports.run = async function({ api, event }) {
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
 		api.changeNickname(`{ ${global.config.PREFIX} } × ${(!global.config.BOTNAME) ? "bot" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
 		const fs = require("fs");
-		return api.sendMessage("𝐇𝐄𝐋𝐋𝐎 𝐄𝐕𝐄𝐑𝐘𝐎𝐍𝐄🙋‍♂️", event.threadID, () => api.sendMessage({body:`🌺⃝𝐌𝐀𝐑⃟𝐈𝐍𝐀  𝐁𝐎𝐓🦋🌺 𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃«
+		return api.sendMessage("𝐇𝐄𝐋𝐋𝐎 𝐄𝐕𝐄𝐑𝐘𝐎𝐍𝐄🙋‍♂️", event.threadID, () => api.sendMessage({body:`🌺𝗝𝗔𝗠𝗔𝗟  𝗕𝗢𝗧🦋🌺 𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃«
 
 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐛𝐲𝐞 ཫ༄𒁍𝗝𝗔𝗠𝗔𝗟 𝗣𝗔𝗧𝗛𝗔𝗡☘️
 <------------------------------>  
