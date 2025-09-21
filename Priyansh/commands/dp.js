@@ -1,83 +1,74 @@
 module.exports.config = {
-  name: "dp",
-  version: "1.0.0",
-  hasPermssion: 0,
-  credits: "Mr AMAN",
-  description: "dpname maker",
-  commandCategory: "dpname",
-  usages: "text 1 + text 2",
-  cooldowns: 1
-};
-module.exports.wrapText = (ctx, text, maxWidth) => {
-  return new Promise((resolve) => {
-    if (ctx.measureText(text).width < maxWidth) return resolve([text]);
-    if (ctx.measureText("W").width > maxWidth) return resolve(null);
-    const words = text.split(" ");
-    const lines = [];
-    let line = "";
-    while (words.length > 0) {
-      let split = false;
-      while (ctx.measureText(words[0]).width >= maxWidth) {
-        const temp = words[0];
-        words[0] = temp.slice(0, -1);
-        if (split) words[1] = `${temp.slice(-1)}${words[1]}`;
-        else {
-          split = true;
-          words.splice(1, 0, temp.slice(-1));
-        }
-      }
-      if (ctx.measureText(`${line}${words[0]}`).width < maxWidth)
-        line += `${words.shift()} `;
-      else {
-        lines.push(line.trim());
-        line = "";
-      }
-      if (words.length === 0) lines.push(line.trim());
+    name: "dp",
+    version: "7.3.1",
+    hasPermssion: 0,
+    credits: " Priyansh Rajput", 
+    description: "Get Pair From Mention",
+    commandCategory: "img",
+    usages: "[@mention]",
+    cooldowns: 5, 
+    dependencies: {
+        "axios": "",
+        "fs-extra": "",
+        "path": "",
+        "jimp": ""
     }
-    return resolve(lines);
-  });
 };
 
-module.exports.run = async function ({ api, event, args, Users }) {
-  let { senderID, threadID, messageID } = event;
-  const { loadImage, createCanvas } = require("canvas");
-  const Canvas = global.nodemodule["canvas"];
-  const request = require('request');
-  const fs = global.nodemodule["fs-extra"];
-  const axios = global.nodemodule["axios"];
-  let pathImg = __dirname + `/cache/drake.png`;
-  const text = args.join(" ").trim().replace(/\s+/g, " ").replace(/(\s+\=)/g, "+").replace(/\|\s+/g, "+").split("+");
-  let getImage = (
-    await axios.get(encodeURI(`https://i.imgur.com/uFUP2y3.jpeg`), {
-      responseType: "arraybuffer",
-    })
-  ).data;
-  fs.writeFileSync(pathImg, Buffer.from(getImage, "utf-8"));
-if(!fs.existsSync(__dirname+'/cache/SNAZZYSURGE.ttf')) { 
-      let getfont = (await axios.get(`https://drive.google.com/u/0/uc?id=11YxymRp0y3Jle5cFBmLzwU89XNqHIZux&export=download`, { responseType: "arraybuffer" })).data;
-       fs.writeFileSync(__dirname+"/cache/SNAZZYSURGE.ttf", Buffer.from(getfont, "utf-8"));
-    };
-  let baseImage = await loadImage(pathImg);
-  let canvas = createCanvas(baseImage.width, baseImage.height);
-  let ctx = canvas.getContext("2d");
-  ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-  Canvas.registerFont(__dirname+`/cache/SNAZZYSURGE.ttf`, {
-        family: "SNAZZYSURGE"
-    });
-  ctx.font = "40px SNAZZYSURGE";
-  ctx.fillStyle = "#000000";
-  ctx.textAlign = "small";
-  const line = await this.wrapText(ctx, text[0], 400);
-  const lines = await this.wrapText(ctx, text[1], 440);
-  ctx.fillText(line.join("\n"), 120, 500)
-  ctx.fillText(lines.join("\n"), 460, 563)
-  ctx.beginPath();
-  const imageBuffer = canvas.toBuffer();
-  fs.writeFileSync(pathImg, imageBuffer);
-  return api.sendMessage(
-    { attachment: fs.createReadStream(pathImg) },
-    threadID,
-    () => fs.unlinkSync(pathImg),
-    messageID
-  );
-};
+module.exports.onLoad = async() => {
+    const { resolve } = global.nodemodule["path"];
+    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+    const { downloadFile } = global.utils;
+    const dirMaterial = __dirname + `/JAMAL/Pathan/`;
+    const path = resolve(__dirname, 'JAMAL/Pathan', 'dp00.jpg');
+    if (!existsSync(dirMaterial + "Pathan")) mkdirSync(dirMaterial, { recursive: true });
+    if (!existsSync(path)) await downloadFile("https://ibb.co/prBRzYwT", path); 
+}
+
+async function makeImage({ one, two }) {
+    const fs = global.nodemodule["fs-extra"];
+    const path = global.nodemodule["path"];
+    const axios = global.nodemodule["axios"]; 
+    const jimp = global.nodemodule["jimp"];
+    const __root = path.resolve(__dirname, "JAMAL", "Babu");
+
+    let batgiam_img = await jimp.read(__root + "/dp00.jpg");
+    let pathImg = __root + `/batman${one}_${two}.png`;
+    let avatarOne = __root + `/avt_${one}.png`;
+    let avatarTwo = __root + `/avt_${two}.png`;
+    
+    let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
+    fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
+    
+    let getAvatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
+    fs.writeFileSync(avatarTwo, Buffer.from(getAvatarTwo, 'utf-8'));
+    
+    let circleOne = await jimp.read(await circle(avatarOne));
+    let circleTwo = await jimp.read(await circle(avatarTwo));
+    batgiam_img.composite(circleOne.resize(250, 250), 120, 178).composite(circleTwo.resize(250, 250), 712,180);
+    
+    let raw = await batgiam_img.getBufferAsync("image/png");
+    
+    fs.writeFileSync(pathImg, raw);
+    fs.unlinkSync(avatarOne);
+    fs.unlinkSync(avatarTwo);
+    
+    return pathImg;
+}
+async function circle(image) {
+    const jimp = require("jimp");
+    image = await jimp.read(image);
+    image.circle();
+    return await image.getBufferAsync("image/png");
+}
+
+module.exports.run = async function ({ event, api, args }) {    
+    const fs = global.nodemodule["fs-extra"];
+    const { threadID, messageID, senderID } = event;
+    const mention = Object.keys(event.mentions);
+    if (!mention[0]) return api.sendMessage("Please mention 1 person.", threadID, messageID);
+    else {
+        const one = senderID, two = mention[0];
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+    }
+      }
