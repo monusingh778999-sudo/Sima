@@ -22,7 +22,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/KRISHNA/Babu/`;
     const path = resolve(__dirname, 'KRISHNA/Babu', 'dp00.jpg');
     if (!existsSync(dirMaterial + "Babu")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://ibb.co/prBRzYwT", path); 
+    if (!existsSync(path)) await downloadFile("https://i.postimg.cc/C1947PyC/dp00.jpg", path); 
 }
 
 async function makeImage({ one, two }) {
@@ -71,4 +71,4 @@ module.exports.run = async function ({ event, api, args }) {
         const one = senderID, two = mention[0];
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
-                    }
+    }
