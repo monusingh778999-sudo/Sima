@@ -19,10 +19,10 @@ module.exports.onLoad = async() => {
     const { resolve } = global.nodemodule["path"];
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
-    const dirMaterial = __dirname + `/KRISHNA/Babu/`;
-    const path = resolve(__dirname, 'KRISHNA/Babu', 'dp00.jpg');
-    if (!existsSync(dirMaterial + "Babu")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.postimg.cc/C1947PyC/dp00.jpg", path); 
+    const dirMaterial = __dirname + `/OWNER/Jamal/`;
+    const path = resolve(__dirname, 'ONWER/Jamal', 'dp00.jpg');
+    if (!existsSync(dirMaterial + "Jamal")) mkdirSync(dirMaterial, { recursive: true });
+    if (!existsSync(path)) await downloadFile("https://ibb.co/prBRzYwT", path); 
 }
 
 async function makeImage({ one, two }) {
