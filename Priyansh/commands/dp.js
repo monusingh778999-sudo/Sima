@@ -22,7 +22,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/KRISHNA/Babu/`;
     const path = resolve(__dirname, 'KRISHNA/Babu', 'dp00.jpg');
     if (!existsSync(dirMaterial + "Babu")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://postimg.cc/sBF8QSkM", path); 
+    if (!existsSync(path)) await downloadFile("https://i.postimg.cc/C1947PyC/dp00.jpg", path); 
 }
 
 async function makeImage({ one, two }) {
