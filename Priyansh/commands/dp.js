@@ -19,9 +19,9 @@ module.exports.onLoad = async() => {
     const { resolve } = global.nodemodule["path"];
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
-    const dirMaterial = __dirname + `/JAMAL/Pathan/`;
-    const path = resolve(__dirname, 'JAMAL/Pathan', 'dp00.jpg');
-    if (!existsSync(dirMaterial + "Pathan")) mkdirSync(dirMaterial, { recursive: true });
+    const dirMaterial = __dirname + `/KRISHNA/Babu/`;
+    const path = resolve(__dirname, 'KRISHNA/Babu', 'dp00.jpg');
+    if (!existsSync(dirMaterial + "Babu")) mkdirSync(dirMaterial, { recursive: true });
     if (!existsSync(path)) await downloadFile("https://ibb.co/prBRzYwT", path); 
 }
 
@@ -30,7 +30,7 @@ async function makeImage({ one, two }) {
     const path = global.nodemodule["path"];
     const axios = global.nodemodule["axios"]; 
     const jimp = global.nodemodule["jimp"];
-    const __root = path.resolve(__dirname, "JAMAL", "Babu");
+    const __root = path.resolve(__dirname, "KRISHNA", "Babu");
 
     let batgiam_img = await jimp.read(__root + "/dp00.jpg");
     let pathImg = __root + `/batman${one}_${two}.png`;
@@ -71,4 +71,4 @@ module.exports.run = async function ({ event, api, args }) {
         const one = senderID, two = mention[0];
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
-      }
+                    }
