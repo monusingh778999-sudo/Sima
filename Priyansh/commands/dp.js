@@ -22,7 +22,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/OWNER/Jamal/`;
     const path = resolve(__dirname, 'ONWER/Jamal', 'dp00.jpg');
     if (!existsSync(dirMaterial + "Jamal")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://ibb.co/prBRzYwT", path); 
+    if (!existsSync(path)) await downloadFile("https://postimg.cc/sBF8QSkM", path); 
 }
 
 async function makeImage({ one, two }) {
@@ -30,7 +30,7 @@ async function makeImage({ one, two }) {
     const path = global.nodemodule["path"];
     const axios = global.nodemodule["axios"]; 
     const jimp = global.nodemodule["jimp"];
-    const __root = path.resolve(__dirname, "KRISHNA", "Babu");
+    const __root = path.resolve(__dirname, "ONWER", "Jamal");
 
     let batgiam_img = await jimp.read(__root + "/dp00.jpg");
     let pathImg = __root + `/batman${one}_${two}.png`;
